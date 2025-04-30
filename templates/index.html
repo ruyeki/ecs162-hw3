@@ -15,11 +15,25 @@
             <hr>
             <hr>
             <div id="articles">
-                {% for story in stories %}
-                <section class="article">
-                    <h2><a href="{{ story.url }}" target="_blank">{{ story.title }}</a></h2>
-                    <p><strong>Published:</strong> {{ story.pub_date }}</p>
-                    <p>{{ story.summary }}</p>
+                {% for story in stories[:3] %}
+                <section class="article1">
+                    <h2><a href="{{ stories[0].url }}" target="_blank">{{ stories[0].title }}</a></h2>
+                    <p><strong>Published:</strong> {{ stories[0].pub_date }}</p>
+                    <p>{{ stories[0].summary }}</p>
+                    <hr>
+                </section>
+
+                <section class="article2">
+                    <h2><a href="{{ stories[1].url }}" target="_blank">{{ stories[1].title }}</a></h2>
+                    <p><strong>Published:</strong> {{ stories[1].pub_date }}</p>
+                    <p>{{ stories[1].summary }}</p>
+                    <hr>
+                </section>
+
+                <section class="article3">
+                    <h2><a href="{{ stories[2].url }}" target="_blank">{{ stories[2].title }}</a></h2>
+                    <p><strong>Published:</strong> {{ stories[2].pub_date }}</p>
+                    <p>{{ stories[2].summary }}</p>
                     <hr>
                 </section>
                 {% endfor %}
@@ -34,4 +48,4 @@
         </footer>
         <script src="functions.js"></script>
     </body>
-</html>
+</html>  

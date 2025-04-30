@@ -44,6 +44,9 @@ def get_stories(location):
         data = response.json()
         stories = data.get('response',{}).get('docs')
         for story in stories:
+            story['title'] = story.get('headline', {}).get('main', 'No title')
+            story['url'] = story.get('web_url', '#')
+            story['summary'] = story.get('abstract', 'No summary')
             keywords = story.get('keywords', [])
             city = extract_city_from_keywords(keywords)
             if city:
@@ -52,7 +55,7 @@ def get_stories(location):
                 story['city'] = "N/A"
         return stories
     else:
-        print("Something went wrong");
+        print("Something went wrong")
         return []
 
 

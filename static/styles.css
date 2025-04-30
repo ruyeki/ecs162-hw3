@@ -36,12 +36,14 @@
     }
 
     #articles {
-        display: flex;
-        gap: 30px;
-        padding: 40px;
-        justify-content: center;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* 3 columns */
+        gap: 20px; /* space between articles */
+        max-width: 100%;
+        padding: 20px;
+        box-sizing: border-box;
     }
-
+    
     #articles section {
         width:30%;
         text-align: left;
