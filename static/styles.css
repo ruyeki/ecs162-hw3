@@ -1,7 +1,7 @@
 /*Added fonts*/
 @font-face {
     font-family: 'Chomsky';
-    src: url('fonts/chomsky/Chomsky.otf') format('opentype');
+    src: url('assets/fonts/chomsky/Chomsky.otf') format('opentype');
 }
 
 /*Desktop Display*/
