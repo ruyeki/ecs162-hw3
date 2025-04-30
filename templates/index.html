@@ -15,26 +15,50 @@
             <hr>
             <hr>
             <div id="articles">
+
+                <!--First article on leftmost side-->
                 <section class="article1">
+
+                    <!--Extracting attributes from very first story in stories list-->
                     <h2><a href="{{ stories[0].url }}" target="_blank">{{ stories[0].title }}</a></h2>
                     <p><strong>Published:</strong> {{ stories[0].pub_date }}</p>
+
+                    <!--Extracting summary-->
                     <p>{{ stories[0].summary }}</p>
+
+                    <!--Extracting image from multimedia metadata-->
                     <img src="{{ stories[0]['multimedia']['default']['url'] }}" alt="Thumbnail Image" />
                     <hr>
                 </section>
-
+                
+                <!--Middle article-->
                 <section class="article2">
+
+                    <!--Extracting attributes from second story in stories list-->
                     <h2><a href="{{ stories[1].url }}" target="_blank">{{ stories[1].title }}</a></h2>
                     <p><strong>Published:</strong> {{ stories[1].pub_date }}</p>
+
+                    <!--Extracting summary-->
                     <p>{{ stories[1].summary }}</p>
+
+                    
+                    <!--Extracting image from multimedia metadata-->
                     <img src="{{ stories[1]['multimedia']['default']['url'] }}" alt="Thumbnail Image" />
                     <hr>
                 </section>
-
+                
+                <!--Article on rightmost side-->
                 <section class="article3">
+
+                    <!--Extracting attributes from third story in stories list-->
                     <h2><a href="{{ stories[2].url }}" target="_blank">{{ stories[2].title }}</a></h2>
                     <p><strong>Published:</strong> {{ stories[2].pub_date }}</p>
+
+                    <!--Extracting summary-->
                     <p>{{ stories[2].summary }}</p>
+
+                    
+                    <!--Extracting image from multimedia metadata-->
                     <img src="{{ stories[2]['multimedia']['default']['url'] }}" alt="Thumbnail Image" />
                     <hr>
                 </section>
