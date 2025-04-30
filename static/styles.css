@@ -63,6 +63,12 @@
 
 /*Tablet Display*/
 @media screen and (min-width: 768px) and (max-width: 1023px) {
+    hr {
+        position: center;
+        width: 100%;
+        margin:0 auto;
+        justify-content: center;
+    }
     header {
         display: flex;
         flex-direction: column;
