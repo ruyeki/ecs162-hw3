@@ -51,6 +51,11 @@
         padding: 20px;
         border-left: 1px solid black;
     }
+
+    #articles section:first-child {
+        border-right: none;
+    }
+
     #articles section:last-child {
         border-right: none;
     }
