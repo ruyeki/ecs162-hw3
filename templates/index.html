@@ -49,9 +49,13 @@
                 </section>
             </div>
 
+            <!--Testing Here-->
+            <!--We get the headline, date, and city-->>
             <div>
                 {%for story in stories%}
-                    <p>{{ story.title }}</p>
+                <h2>{{ story.headline.main }}</h2>
+                <p><strong>Published:</strong> {{ story.pub_date }}</p>
+                <p><strong>Location:</strong> {{ story.city }}</p>
                 {%endfor%}
             </div>
         </main>

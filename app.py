@@ -8,30 +8,37 @@ import requests
 load_dotenv()
 
 app = Flask(__name__)
-NYT_API_KEY = os.getenv("NYT_API_KEY")
-
 nyt_api_key = os.getenv('NYT_API_KEY')
 
 
 @app.route('/')
 def index():
-
-    stories = get_stories()
-
-    print(stories)
-
+    # Had to compile both sets into one set of stories
+    sac_stories = get_stories("Sacramento")
+    davis_stories = get_stories("Davis")
+    stories = sac_stories + davis_stories
+    stories.sort(key=lambda x: x.get("pub_date", ""), reverse=True)
 
     return render_template('index.html', stories = stories)
 
 
-def get_stories(): 
-    url = 'https://api.nytimes.com/svc/topstories/v2/home.json'
-    params = {'api-key': nyt_api_key}
+def get_stories(location): 
+    url = 'https://api.nytimes.com/svc/search/v2/articlesearch.json'
+    params = {
+        'fq': 'timesTag.location:"' + location + '"',
+        'sort': 'newest',
+        'api-key': nyt_api_key
+    }
     response = requests.get(url, params=params)
     
     if response.status_code == 200:
-        return response.json()['results']
+        data = response.json()
+        stories = data.get('response',{}).get('docs')
+        for story in stories:
+            story['city'] = location
+        return stories
     else:
+        print("Something went wrong");
         return []
 
 
