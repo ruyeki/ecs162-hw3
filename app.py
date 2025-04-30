@@ -6,6 +6,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 app = Flask(__name__)
+NYT_API_KEY = os.getenv("NYT_API_KEY")
 
 @app.route('/')
 def index():
