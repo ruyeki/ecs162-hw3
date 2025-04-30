@@ -1,0 +1,61 @@
+.row{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    
+}
+
+.content{
+    border-bottom: black solid 2px;
+    font-family: "Georgia"
+}
+
+.left-column img {
+    width: 100%;         
+    height: auto;      
+    display: block;      
+    margin-top: 10px;    
+    border-radius: 8px;  
+    max-width: 100%;     
+  }
+
+.left-column{ 
+    width: 22%;
+    padding: 10px;
+    height: auto;
+}
+
+
+.right-column{
+    width: 22%;
+    padding: 10px;
+    height: auto;
+}
+
+.middle-column{
+    width: 48%;
+    padding: 10px;
+    height: auto;
+}
+
+header{
+    border-bottom: black solid 2px;
+}
+
+
+/*This is for responsiveness when screen size is that of a tablet */
+@media screen and (max-width: 900px) {
+    .left-column, .middle-column, .right-column {
+        flex: 0 0 48%; /* Two columns per row */
+    }
+  }
+
+
+/*This is for responsiveness when screen size is that of a phone */
+@media screen and (max-width: 600px) {
+    .left-column,
+    .middle-column,
+    .right-column {
+      flex: 0 0 100%; /* One column */
+    }
+  }
