@@ -20,6 +20,14 @@ def index():
 
     return render_template('index.html', stories = stories)
 
+def extract_city_from_keywords(keywords):
+    for keyword in keywords:
+        if 'sacramento' in keyword.get('value', '').lower():
+            return 'Sacramento'
+        if 'davis' in keyword.get('value', '').lower():
+            return 'Davis'
+    return None
+
 
 def get_stories(location): 
     url = 'https://api.nytimes.com/svc/search/v2/articlesearch.json'
@@ -36,7 +44,12 @@ def get_stories(location):
         data = response.json()
         stories = data.get('response',{}).get('docs')
         for story in stories:
-            story['city'] = data.get('location')
+            keywords = story.get('keywords', [])
+            city = extract_city_from_keywords(keywords)
+            if city:
+                story['city'] = city
+            else:
+                story['city'] = "N/A"
         return stories
     else:
         print("Something went wrong");
