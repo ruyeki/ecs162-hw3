@@ -14,7 +14,7 @@ nyt_api_key = os.getenv('NYT_API_KEY')
 @app.route('/')
 def index():
     # Had to compile both sets into one set of stories
-    stories = get_stories("Sacramento")
+    stories = get_stories()
     stories.sort(key=lambda x: x.get("pub_date", ""), reverse=True)
     limited_stories = stories[:3] 
     print(stories)
@@ -30,7 +30,7 @@ def extract_city_from_keywords(keywords):
     return None
 
 
-def get_stories(location): 
+def get_stories(): 
     url = 'https://api.nytimes.com/svc/search/v2/articlesearch.json'
 
     params = {

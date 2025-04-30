@@ -19,6 +19,7 @@
                     <h2><a href="{{ stories[0].url }}" target="_blank">{{ stories[0].title }}</a></h2>
                     <p><strong>Published:</strong> {{ stories[0].pub_date }}</p>
                     <p>{{ stories[0].summary }}</p>
+                    <img src="{{ stories[0]['multimedia']['default']['url'] }}" alt="Thumbnail Image" />
                     <hr>
                 </section>
 
@@ -26,6 +27,7 @@
                     <h2><a href="{{ stories[1].url }}" target="_blank">{{ stories[1].title }}</a></h2>
                     <p><strong>Published:</strong> {{ stories[1].pub_date }}</p>
                     <p>{{ stories[1].summary }}</p>
+                    <img src="{{ stories[1]['multimedia']['default']['url'] }}" alt="Thumbnail Image" />
                     <hr>
                 </section>
 
@@ -33,6 +35,7 @@
                     <h2><a href="{{ stories[2].url }}" target="_blank">{{ stories[2].title }}</a></h2>
                     <p><strong>Published:</strong> {{ stories[2].pub_date }}</p>
                     <p>{{ stories[2].summary }}</p>
+                    <img src="{{ stories[2]['multimedia']['default']['url'] }}" alt="Thumbnail Image" />
                     <hr>
                 </section>
             </div>
