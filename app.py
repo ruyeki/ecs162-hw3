@@ -14,22 +14,25 @@ nyt_api_key = os.getenv('NYT_API_KEY')
 @app.route('/')
 def index():
     # Had to compile both sets into one set of stories
-    sac_stories = get_stories("Sacramento")
-    davis_stories = get_stories("Davis")
-    stories = sac_stories + davis_stories
-    stories.sort(key=lambda x: x.get("pub_date", ""), reverse=True)
+    stories = get_stories("Sacramento")
+
+    print(stories)
 
     return render_template('index.html', stories = stories)
 
 
 def get_stories(location): 
     url = 'https://api.nytimes.com/svc/search/v2/articlesearch.json'
+
     params = {
-        'fq': 'timesTag.location:"' + location + '"',
-        'sort': 'newest',
-        'api-key': nyt_api_key
+        'q': 'Davis, California',
+        'begin_date': '20230101',  
+        'end_date': '20250430',  
+        'api-key': nyt_api_key 
     }
+
     response = requests.get(url, params=params)
+
     
     if response.status_code == 200:
         data = response.json()
