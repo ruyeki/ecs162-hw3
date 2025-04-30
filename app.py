@@ -25,9 +25,7 @@ def get_stories(location):
     url = 'https://api.nytimes.com/svc/search/v2/articlesearch.json'
 
     params = {
-        'q': 'Davis, California',
-        #'begin_date': '20230101',  
-        #'end_date': '20250430',  
+        'q': 'Davis (Calif) AND Sacramento (Calif))',
         'api-key': nyt_api_key 
     }
 
@@ -38,7 +36,7 @@ def get_stories(location):
         data = response.json()
         stories = data.get('response',{}).get('docs')
         for story in stories:
-            story['city'] = location
+            story['city'] = data.get('location')
         return stories
     else:
         print("Something went wrong");
