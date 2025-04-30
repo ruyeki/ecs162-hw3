@@ -15,7 +15,6 @@
             <hr>
             <hr>
             <div id="articles">
-                {% for story in stories[:3] %}
                 <section class="article1">
                     <h2><a href="{{ stories[0].url }}" target="_blank">{{ stories[0].title }}</a></h2>
                     <p><strong>Published:</strong> {{ stories[0].pub_date }}</p>
@@ -36,7 +35,6 @@
                     <p>{{ stories[2].summary }}</p>
                     <hr>
                 </section>
-                {% endfor %}
             </div>
             
         </main>

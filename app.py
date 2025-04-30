@@ -16,9 +16,10 @@ def index():
     # Had to compile both sets into one set of stories
     stories = get_stories("Sacramento")
     stories.sort(key=lambda x: x.get("pub_date", ""), reverse=True)
+    limited_stories = stories[:3] 
     print(stories)
 
-    return render_template('index.html', stories = stories)
+    return render_template('index.html', limited_stories = limited_stories, stories = stories)
 
 def extract_city_from_keywords(keywords):
     for keyword in keywords:
