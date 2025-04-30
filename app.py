@@ -15,7 +15,7 @@ nyt_api_key = os.getenv('NYT_API_KEY')
 def index():
     # Had to compile both sets into one set of stories
     stories = get_stories("Sacramento")
-
+    stories.sort(key=lambda x: x.get("pub_date", ""), reverse=True)
     print(stories)
 
     return render_template('index.html', stories = stories)
@@ -26,8 +26,8 @@ def get_stories(location):
 
     params = {
         'q': 'Davis, California',
-        'begin_date': '20230101',  
-        'end_date': '20250430',  
+        #'begin_date': '20230101',  
+        #'end_date': '20250430',  
         'api-key': nyt_api_key 
     }
 
