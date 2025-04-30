@@ -48,7 +48,14 @@
                     <img src="images/onions.jfif" alt="A Couple of Onions">
                 </section>
             </div>
+
+            <div>
+                {%for story in stories%}
+                    <p>{{ story.title }}</p>
+                {%endfor%}
+            </div>
         </main>
+
 
         <footer>
             <hr>
