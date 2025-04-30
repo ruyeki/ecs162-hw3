@@ -10,10 +10,8 @@ load_dotenv()
 app = Flask(__name__)
 nyt_api_key = os.getenv('NYT_API_KEY')
 
-
 @app.route('/')
 def index():
-    # Had to compile both sets into one set of stories
     stories = get_stories()
     stories.sort(key=lambda x: x.get("pub_date", ""), reverse=True)
     limited_stories = stories[:3] 
@@ -21,6 +19,8 @@ def index():
 
     return render_template('index.html', limited_stories = limited_stories, stories = stories)
 
+# We pull directly from articles so the content is relating to Davis and Sac,
+# not just the location it was written in
 def extract_city_from_keywords(keywords):
     for keyword in keywords:
         if 'sacramento' in keyword.get('value', '').lower():
@@ -44,6 +44,8 @@ def get_stories():
     if response.status_code == 200:
         data = response.json()
         stories = data.get('response',{}).get('docs')
+
+        # Fetch necessary components here for our frontend
         for story in stories:
             story['title'] = story.get('headline', {}).get('main', 'No title')
             story['url'] = story.get('web_url', '#')
