@@ -1,61 +1,174 @@
-.row{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
+/*Added fonts*/
+@font-face {
+    font-family: 'Chomsky';
+    src: url('fonts/chomsky/Chomsky.otf') format('opentype');
+}
+
+/*Desktop Display*/
+/*Criteria: Logo must be in center of page and date must be to the left, so we'll create a flexbox*/
+@media screen and (min-width: 1024px) {
+    hr {
+        position: center;
+        width: 90%;
+        margin:0 auto;
+        justify-content: center;
+    }
     
-}
-
-.content{
-    border-bottom: black solid 2px;
-    font-family: "Georgia"
-}
-
-.left-column img {
-    width: 100%;         
-    height: auto;      
-    display: block;      
-    margin-top: 10px;    
-    border-radius: 8px;  
-    max-width: 100%;     
-  }
-
-.left-column{ 
-    width: 22%;
-    padding: 10px;
-    height: auto;
-}
-
-
-.right-column{
-    width: 22%;
-    padding: 10px;
-    height: auto;
-}
-
-.middle-column{
-    width: 48%;
-    padding: 10px;
-    height: auto;
-}
-
-header{
-    border-bottom: black solid 2px;
-}
-
-
-/*This is for responsiveness when screen size is that of a tablet */
-@media screen and (max-width: 900px) {
-    .left-column, .middle-column, .right-column {
-        flex: 0 0 48%; /* Two columns per row */
+    header {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        position: relative;
+        padding: 20px;
     }
-  }
-
-
-/*This is for responsiveness when screen size is that of a phone */
-@media screen and (max-width: 600px) {
-    .left-column,
-    .middle-column,
-    .right-column {
-      flex: 0 0 100%; /* One column */
+    
+    #title_logo {
+        font-family: 'Chomsky', serif;
+        margin: 0;
+        padding: 0;
+        font-size: 56px;
     }
-  }
+    
+    #date_section {
+        position: absolute;
+        left: 5%;
+        font-size: 18px;
+    }
+
+    #articles {
+        display: flex;
+        gap: 30px;
+        padding: 40px;
+        justify-content: center;
+    }
+
+    #articles section {
+        width:30%;
+        text-align: left;
+        padding: 20px;
+        border-left: 1px solid black;
+    }
+    #articles section:last-child {
+        border-right: none;
+    }
+
+    #articles img {
+        width: 100%;
+        height: auto;
+        margin-top: 10px;
+    }
+}
+
+/*Tablet Display*/
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+    header {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: relative;
+        padding: 20px;
+    }
+
+    #title_logo {
+        text-align: center;
+        font-family: 'Chomsky', serif;
+        margin: 0;
+        padding: 0;
+        font-size: 56px;
+    }
+
+    #date_section {
+        position: static;
+        left: 5%;
+        font-size: 18px;
+    }
+
+    #articles {
+        display: flex;
+        gap: 20px;
+        padding: 40px;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        box-sizing: border-box;
+    }
+
+
+    #articles section {
+        width: 48%;
+        text-align: left;
+        padding: 10px;
+        box-sizing: border-box;
+        border-left: 1px solid black;
+    }
+
+    #articles section:first-child {
+        border-left: none;
+    }
+    #articles section:last-child {
+        border-left: none;
+
+    }
+
+    #articles img {
+        width: 100%;
+        height: auto;
+        margin-top: 10px;
+    }
+
+}
+
+/*Mobile Display*/
+@media screen and (max-width: 768px) {
+    hr {
+        position: center;
+        width: 100%;
+        margin:0 auto;
+        justify-content: center;
+    }
+    header {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: relative;
+        padding: 10px;
+    }
+
+    #title_logo {
+        text-align: center;
+        font-family: 'Chomsky', serif;
+        margin: 0;
+        padding: 0;
+        font-size: 56px;
+    }
+
+    #date_section {
+        position: static;
+        margin-bottom: 10px;
+        left: 5%;
+        font-size: 18px;
+    }
+    #articles {
+        display: flex;
+        gap: 30px;
+        padding: 40px;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    #articles section {
+        width:100%;
+        text-align: left;
+        padding: 10px;
+        border-top: 1px solid black;
+    }
+    #articles section:first-child {
+        border:none;
+    }
+
+    #articles img {
+        width: 100%;
+        height: auto;
+        margin-top: 10px;
+    }
+}
+

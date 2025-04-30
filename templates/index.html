@@ -1,90 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href = "styles.css">
-    <title>The New York Times</title>
-</head>
-
-<body>
-    <header>
-
-        <!--Display today's date-->
-        <p>Today's Paper</p>
-        <p id = "date" style = "font-family: Helvetica Neue"></p>
-
-        <h1 style = "font-family: Georgia, serif; font-size: 48px; text-align: center; ">The New York Times</h1>
-    </header>
-
-    <main>
-
-    <!---A single row of content-->
-    <div class = "row">
-        <!---Left column-->
-        <div class = "left-column">
-            <div class = "content">
-            <h2>Lorem ipsum dolor sit amet consectetur adipiscing elit.</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <head>
+        <title>The New York Times - Breaking News, US News, World News, and Videos</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <header>
+            <h1 id="title_logo">The New York Times</h1>
+            <div id="date_section">
+                <div id="date"></div>
             </div>
-        </div>
-        <!---Middle column-->
-        <div class = "middle-column"> 
-            <div class = "content">
-            <h2>Lorem ipsum dolor sit amet consectetur adipiscing elit.</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.</p>
-        </div>
-        </div>
-        <!---Right column-->
-        <div class = "right-column">
-            <div class = "content">
-                <h2>Lorem ipsum dolor sit amet consectetur adipiscing elit.</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                </div>
-        </div>
-    </div>
+        </header>
+        <main>
+            <hr>
+            <hr>
 
-    <div class = "row">
-        <!---Left column-->
-        <div class = "left-column">
+            <div id="articles">
+                <!--Article 1-->
+                <section id="article1">
+                    <h2>Check Out This Insane Propane Tank</h2>
+                    <p> Dude check out this propane tank. It can carry propane and is known to be the sole
+                        fuel at barbaques. You can refill them and buy them at the gas station. I dunno about you
+                        but this is absolutely bananas. Think of all the things you can fuel. Cars, stoves, basically anything
+                        you can think of. If we didn't have these we would be doomed as a species.
+                    <img src="images/propane.jfif" alt="A Propane Tank">
+                </section>
 
-            <div class = "content">
-                <h2>Lorem ipsum dolor sit amet consectetur adipiscing elit.</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                <img src = 'article-image.jpg'>    
+                <!--Article 2-->
+                <section id="article2">
+                    <h2>Local Man Keeps Losing at Poker</h2>
+                    <img src="images/cards.jfif" alt="Poker Cards">
+                    <p>Can you believe this guy? He just keeps losing at poker. Even with a winning hand he folds. I cannot
+                        believe it and neither should you. This guy should just quit while he can. I heard he took out his house's
+                        mortgage to pay off his debt. If you were related to him, would you allow yourself to be subjected
+                        to his insanity? This guy just keeps losing it all.
+                    </p>
+                </section>
+                
+                <!--Article 3-->
+                <section id="article3">
+                    <h2>Illegal Onion Farm Busted</h2>
+                    <p> Insane weekend for the police. In a sting operation, an onion farm was shut down today. A local SWAT team
+                        was given a tip and enacted justice swiftly. The farmer said silly things like "I didn't do anything wrong"
+                        and "this is just fresh produce". He was read his rights and was proceeded to be tackled and cuffed. A fantastic
+                        day in the city of New York, where the streets are slightly more safe.
+                    </p>
+                    <img src="images/onions.jfif" alt="A Couple of Onions">
+                </section>
             </div>
+        </main>
 
-       </div>
-
-        <div class = "middle-column"> 
-            <div class = "content">
-                <h2>Lorem ipsum dolor sit amet consectetur adipiscing elit.</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.</p>
-            </div>    
-        
-        </div>
-
-        <div class = "right-column">
-            <div class = "content">
-                <h2>Lorem ipsum dolor sit amet consectetur adipiscing elit.</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>   
-            </div>
-        </div>
-    </div>
-
-    
-    </main>
-</body>
-
+        <footer>
+            <hr>
+            <hr>
+        </footer>
+        <script src="functions.js"></script>
+    </body>
 </html>
-
-<script>
-
-    //get todays date
-    const today = new Date();
-    document.getElementById('date').textContent = today;
-</script>
