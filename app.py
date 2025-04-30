@@ -8,6 +8,7 @@ import requests
 load_dotenv()
 
 app = Flask(__name__)
+NYT_API_KEY = os.getenv("NYT_API_KEY")
 
 nyt_api_key = os.getenv('NYT_API_KEY')
 
