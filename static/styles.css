@@ -43,10 +43,11 @@
         padding: 20px;
         box-sizing: border-box;
     }
-    
+
     #articles section {
-        width:30%;
+        width:60%;
         text-align: left;
+        margin-left: 60px;
         padding: 20px;
         border-left: 1px solid black;
     }
