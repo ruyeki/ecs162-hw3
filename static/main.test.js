@@ -1,3 +1,4 @@
+// npm test in the outermost directory
 const { showDate } = require('./main');
 
 describe('showDate', () => {
