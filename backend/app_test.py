@@ -1,4 +1,4 @@
-import app
+import backend.app as app
 from unittest.mock import patch, Mock
 import requests
 from dotenv import load_dotenv

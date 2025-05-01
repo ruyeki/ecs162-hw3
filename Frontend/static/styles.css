@@ -1,0 +1,188 @@
+/*Added fonts*/
+@font-face {
+    font-family: 'Chomsky';
+    src: url('assets/fonts/chomsky/Chomsky.otf') format('opentype');
+}
+
+/*Desktop Display*/
+/*Criteria: Logo must be in center of page and date must be to the left, so we'll create a flexbox*/
+@media screen and (min-width: 1024px) {
+    hr {
+        position: center;
+        width: 90%;
+        margin:0 auto;
+        justify-content: center;
+    }
+    
+    header {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        position: relative;
+        padding: 20px;
+    }
+    
+    #title_logo {
+        font-family: 'Chomsky', serif;
+        margin: 0;
+        padding: 0;
+        font-size: 56px;
+    }
+    
+    #date_section {
+        position: absolute;
+        left: 5%;
+        font-size: 18px;
+    }
+
+    #articles {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* 3 columns */
+        gap: 20px; /* space between articles */
+        max-width: 100%;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+
+    #articles section {
+        width:60%;
+        text-align: left;
+        margin-left: 60px;
+        padding: 20px;
+        border-left: 1px solid black;
+    }
+
+    #articles section:first-child {
+        border-right: none;
+    }
+
+    #articles section:last-child {
+        border-right: none;
+    }
+
+    #articles img {
+        width: 100%;
+        height: auto;
+        margin-top: 10px;
+    }
+}
+
+/*Tablet Display*/
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+    hr {
+        position: center;
+        width: 100%;
+        margin:0 auto;
+        justify-content: center;
+    }
+    header {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: relative;
+        padding: 20px;
+    }
+
+    #title_logo {
+        text-align: center;
+        font-family: 'Chomsky', serif;
+        margin: 0;
+        padding: 0;
+        font-size: 56px;
+    }
+
+    #date_section {
+        position: static;
+        left: 5%;
+        font-size: 18px;
+    }
+
+    #articles {
+        display: flex;
+        gap: 20px;
+        padding: 40px;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        box-sizing: border-box;
+    }
+
+
+    #articles section {
+        width: 48%;
+        text-align: left;
+        padding: 10px;
+        box-sizing: border-box;
+        border-left: 1px solid black;
+    }
+
+    #articles section:first-child {
+        border-left: none;
+    }
+    #articles section:last-child {
+        border-left: none;
+
+    }
+
+    #articles img {
+        width: 100%;
+        height: auto;
+        margin-top: 10px;
+    }
+
+}
+
+/*Mobile Display*/
+@media screen and (max-width: 768px) {
+    hr {
+        position: center;
+        width: 100%;
+        margin:0 auto;
+        justify-content: center;
+    }
+    header {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: relative;
+        padding: 10px;
+    }
+
+    #title_logo {
+        text-align: center;
+        font-family: 'Chomsky', serif;
+        margin: 0;
+        padding: 0;
+        font-size: 56px;
+    }
+
+    #date_section {
+        position: static;
+        margin-bottom: 10px;
+        left: 5%;
+        font-size: 18px;
+    }
+    #articles {
+        display: flex;
+        gap: 30px;
+        padding: 40px;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    #articles section {
+        width:100%;
+        text-align: left;
+        padding: 10px;
+        border-top: 1px solid black;
+    }
+    #articles section:first-child {
+        border:none;
+    }
+
+    #articles img {
+        width: 100%;
+        height: auto;
+        margin-top: 10px;
+    }
+}
+

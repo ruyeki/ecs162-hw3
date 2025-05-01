@@ -19,7 +19,7 @@ def index():
     limited_stories = stories[:3] 
     print(stories)
 
-    return render_template('index.html', limited_stories = limited_stories, stories = stories)
+    return render_template('/frontend/index.html', limited_stories=limited_stories, stories=stories)
 
 # We pull directly from articles so the content is relating to Davis and Sac,
 # not just the location it was written in
