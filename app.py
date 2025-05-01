@@ -3,6 +3,8 @@ import os
 from dotenv import load_dotenv
 from flask import Flask, render_template
 import requests
+import json
+import jsonify
 
 # Load environment variables from .env file
 load_dotenv()
@@ -39,10 +41,12 @@ def get_stories():
     }
 
     response = requests.get(url, params=params)
+    
 
     
     if response.status_code == 200:
         data = response.json()
+        print(json.dumps(data, indent=2))
         stories = data.get('response',{}).get('docs')
 
         # Fetch necessary components here for our frontend
