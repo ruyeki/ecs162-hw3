@@ -1,4 +1,3 @@
-// npm test in the outermost directory
 const { showDate } = require('./main');
 
 describe('showDate', () => {
@@ -14,7 +13,7 @@ describe('showDate', () => {
         expect(document.getElementById('date').innerHTML).toContain('Thursday May 1, 2025');
     });
 
-    // Checks for leap year
+    // Checks for leap year.
     test('formats leap year date correctly', () => {
         const date = new Date(2024, 1, 29);
         const result = showDate(date);
@@ -22,6 +21,7 @@ describe('showDate', () => {
     });
 });
 
+// T-shirt sizing tests
 describe('Responsive Layout Tests', () => {
     beforeAll(() => {
       document.body.innerHTML = `
@@ -32,7 +32,8 @@ describe('Responsive Layout Tests', () => {
         </div>
       `;
     });
-  
+    
+    // Check for mobile layout.
     describe('Mobile Layout (≤768px)', () => {
       beforeAll(() => {
         window.innerWidth = 767;
@@ -48,7 +49,8 @@ describe('Responsive Layout Tests', () => {
         expect(style.flexDirection).toBe('column');
       });
     });
-  
+    
+    // Check for tablet layout.
     describe('Tablet Layout (768px–1023px)', () => {
       beforeAll(() => {
         window.innerWidth = 800;
@@ -64,7 +66,8 @@ describe('Responsive Layout Tests', () => {
         expect(style.flexWrap).toBe('wrap');
       });
     });
-  
+    
+    // Check for desktop layout.
     describe('Desktop Layout (≥1024px)', () => {
       beforeAll(() => {
         window.innerWidth = 1200;
