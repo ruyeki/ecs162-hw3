@@ -2,7 +2,9 @@
 <html lang="en">
     <head>
         <title>The New York Times - Breaking News, US News, World News, and Videos</title>
-        <link rel="stylesheet" href="/static/styles.css">
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+        <script src="{{ url_for('static', filename='main.js') }}"></script>
+
     </head>
     <body>
         <header>
@@ -71,6 +73,5 @@
             <hr>
             <hr>
         </footer>
-        <script src="../static\main.js"></script>
     </body>
 </html>  

@@ -7,9 +7,10 @@ import json
 import jsonify
 
 # Load environment variables from .env file
-load_dotenv()
+load_dotenv(dotenv_path=os.path.join(os.path.dirname(__file__), '../.env'))
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='../frontend/templates', static_folder='../frontend/static')
+
 nyt_api_key = os.getenv('NYT_API_KEY')
 
 @app.route('/')
@@ -17,9 +18,9 @@ def index():
     stories = get_stories()
     stories.sort(key=lambda x: x.get("pub_date", ""), reverse=True)
     limited_stories = stories[:3] 
-    print(stories)
+    print("These are the stories:", stories)
 
-    return render_template('/frontend/index.html', limited_stories=limited_stories, stories=stories)
+    return render_template('index.html', limited_stories=limited_stories, stories=stories)
 
 # We pull directly from articles so the content is relating to Davis and Sac,
 # not just the location it was written in
