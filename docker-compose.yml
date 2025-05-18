@@ -1,0 +1,12 @@
+services:
+  dex:
+    image: ghcr.io/dexidp/dex:v2.39.0
+    container_name: dex
+    ports:
+      - "5556:5556"
+    volumes:
+      - ./dex/config.yaml:/etc/dex/config.yaml
+
+
+    entrypoint: ["dex"]
+    command: ["serve", "/etc/dex/config.yaml"]
