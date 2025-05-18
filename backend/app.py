@@ -6,7 +6,8 @@ import requests
 import jsonify
 from flask_login import LoginManager, login_required
 from flask_login import login_user
-from flask_login import UserMixin
+from flask_login import UserMixin, logout_user
+
 
 login_manager = LoginManager()
 login_manager.login_view = 'login'  # The name of your login route function
@@ -113,6 +114,13 @@ def login():
     
 
     return render_template('login.html')
+
+@app.route('/logout')
+@login_required
+def logout():
+    logout_user()               # clear user session
+    return redirect(url_for('login'))  # redirect to login or home page
+
 
 
 if __name__ == '__main__':
