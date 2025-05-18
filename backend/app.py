@@ -41,7 +41,9 @@ def load_user(user_id):
 
 user = User()
 
-
+@app.route('/signup', methods = ['POST', 'GET'])
+def signup():
+    return render_template('signup.html')
 
 @app.route('/')
 @login_required
