@@ -8,6 +8,9 @@
     </head>
     <body>
         <header>
+            {%if current_user.is_authenticated%}
+                <h2>Hi {{ current_user.username }}</h2>
+            {%endif%}
             <h1 id="title_logo">The New York Times</h1>
             <div id="date_section">
                 <div id="date"></div>
