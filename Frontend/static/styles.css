@@ -29,10 +29,19 @@
         font-size: 56px;
     }
     
+    #user_section {
+        position: absolute;
+        right: 5%;
+        top: 0px;
+        font-size: 18px;
+    }
+
     #date_section {
         position: absolute;
+        margin: 0;
+        padding: 0;
         left: 5%;
-        font-size: 18px;
+        font-size: 9px;
     }
 
     #articles {
@@ -91,8 +100,16 @@
         font-size: 56px;
     }
 
+    #user_section {
+        position: absolute;
+        right: 5%;
+        top: 0px;
+        font-size: 18px;
+    }
+
     #date_section {
         position: static;
+        top:0px;
         left: 5%;
         font-size: 18px;
     }
@@ -153,6 +170,13 @@
         margin: 0;
         padding: 0;
         font-size: 56px;
+    }
+
+    #user_section {
+        position: absolute;
+        right: 5%;
+        bottom: 0px;
+        font-size: 18px;
     }
 
     #date_section {

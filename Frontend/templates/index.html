@@ -8,14 +8,15 @@
     </head>
     <body>
         <header>
-            {%if current_user.is_authenticated%}
-                <h2>Hi {{ current_user.username }}</h2>
-                <a href="{{ url_for('logout') }}">Logout</a>
-
-            {%endif%}
             <h1 id="title_logo">The New York Times</h1>
             <div id="date_section">
                 <div id="date"></div>
+            </div>
+            <div id="user_section">
+                {%if current_user.is_authenticated%}
+                    <h4>Hi {{ current_user.username }}</h2>
+                    <a href="{{ url_for('logout') }}">Logout</a>
+                {%endif%}
             </div>
         </header>
         <main>
