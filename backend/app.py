@@ -29,6 +29,7 @@ oauth.register(
     client_secret=os.getenv('DEX_CLIENT_SECRET', 'flask-secret'),
     server_metadata_url=os.getenv('DEX_METADATA_URL', 'http://localhost:5556/.well-known/openid-configuration'),
     client_kwargs={'scope': 'openid email profile'},
+    redirect_uri='http://localhost:8000/authorize'
 )
 
 # Dummy user class and user storage
