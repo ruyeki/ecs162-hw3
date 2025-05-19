@@ -87,7 +87,26 @@ def index():
     stories = get_stories()
     stories.sort(key=lambda x: x.get("pub_date", ""), reverse=True)
     limited_stories = stories[:3]
-    return render_template('index.html', comments = comments, limited_stories=limited_stories, stories=stories)
+    userinfo = session.get('user')
+    user_email = userinfo.get('email')
+    return render_template('index.html', user_email = user_email, comments = comments, limited_stories=limited_stories, stories=stories)
+
+
+@app.route('/delete/<int:id>', methods = ['POST'])
+def delete(id): 
+
+    userinfo = session.get('user')
+    print(userinfo)
+
+    allowed_users = ["admin@hw3.com", "moderator@hw3.com"]
+
+    if userinfo.get('email') not in allowed_users:
+        return "Cannot delete comment. Not an admin or moderator."
+    comment_to_delete = Comments.query.get_or_404(id)
+    db.session.delete(comment_to_delete)
+    db.session.commit()
+    return redirect(url_for('index'))
+
 
 @app.route('/login')
 def login():
@@ -107,14 +126,6 @@ def authorize():
     }
     login_user(user)
     return redirect(url_for('index'))
-
-@app.route('/me')
-def me():
-    user = session.get('user')
-    if not user:
-        return jsonify({'error': 'Not logged in'}), 401
-    print(user)
-    return jsonify(user)
 
 @app.route('/logout')
 @login_required

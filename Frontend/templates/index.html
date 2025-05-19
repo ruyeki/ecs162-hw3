@@ -1,16 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-    <script>
-        fetch('/me')
-            .then(response => response.json())
-            .then(data => {
-                if (data.email) {
-                    console.log(data.email)
-                document.getElementById('username').textContent = `Logged in as ${data.username}`;
-                }
-            });
-
-    </script>
     <head>
         <title>The New York Times - Breaking News, US News, World News, and Videos</title>
         <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
@@ -24,7 +13,7 @@
                 <div id="date"></div>
             </div>
             <div id="user_section">
-                    <h4 id = "username"></h2>
+                    <h4>Welcome, {{user_email}}</h2>
                     <a href="{{ url_for('logout') }}">Logout</a>
             </div>
         </header>
@@ -55,7 +44,11 @@
                     <section class = "comment-section1">
                         {%for comment in comments%}
                             {%if comment.comment1%}
-                                <p>{{comment.comment1}}</p>
+                                <p>{{comment.comment1}}</p> 
+                                <form action="{{ url_for('delete', id=comment.id) }}" method="POST">
+                                    <button type="submit">Delete</button>
+                                </form>
+
                             {%endif%}
                         {%endfor%}
                     </section>
@@ -86,6 +79,9 @@
                         {%for comment in comments%}
                             {%if comment.comment2%}
                                 <p>{{comment.comment2}}</p>
+                                <form action="{{ url_for('delete', id=comment.id) }}" method="POST">
+                                    <button type="submit">Delete</button>
+                                </form>
                             {%endif%}
                         {%endfor%}
                     </section>
@@ -119,6 +115,9 @@
                         {%for comment in comments%}
                             {%if comment.comment3%}
                                 <p>{{comment.comment3}}</p>
+                                <form action="{{ url_for('delete', id=comment.id) }}" method="POST">
+                                    <button type="submit">Delete</button>
+                                </form>
                             {%endif%}
                         {%endfor%}
                     </section>
