@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask, render_template, request, redirect, url_for, session, jsonify
 import os
 from dotenv import load_dotenv
 import json
@@ -64,9 +64,20 @@ def authorize():
     userinfo = oauth.dex.parse_id_token(token, nonce)
     user = User(userinfo['sub'], userinfo.get('name', 'Unknown'), userinfo.get('email', 'unknown@example.com'))
     users[user.id] = user
+    session['user'] = {
+        'username': userinfo.get('username'),
+        'email': userinfo.get('email'),
+    }
     login_user(user)
     return redirect(url_for('index'))
 
+@app.route('/me')
+def me():
+    user = session.get('user')
+    if not user:
+        return jsonify({'error': 'Not logged in'}), 401
+    print(user)
+    return jsonify(user)
 
 @app.route('/logout')
 @login_required

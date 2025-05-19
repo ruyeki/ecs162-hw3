@@ -1,5 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+    <script>
+        fetch('/me')
+            .then(response => response.json())
+            .then(data => {
+                if (data.email) {
+                    console.log(data.email)
+                document.getElementById('username').textContent = `Logged in as ${data.email}`;
+                }
+            });
+
+    </script>
     <head>
         <title>The New York Times - Breaking News, US News, World News, and Videos</title>
         <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
@@ -13,10 +24,8 @@
                 <div id="date"></div>
             </div>
             <div id="user_section">
-                {%if current_user.is_authenticated%}
-                    <h4>Hi {{ current_user.username }}</h2>
+                    <h4 id = "username"></h2>
                     <a href="{{ url_for('logout') }}">Logout</a>
-                {%endif%}
             </div>
         </header>
         <main>
