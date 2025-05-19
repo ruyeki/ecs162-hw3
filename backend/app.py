@@ -6,7 +6,7 @@ import requests
 from flask_login import LoginManager, login_required, current_user, login_user, logout_user, UserMixin
 from authlib.integrations.flask_client import OAuth
 import sqlite3
-from models import db, Comments
+from .models import db, Comments
 
 # Load environment variables from .env file
 load_dotenv(dotenv_path=os.path.join(os.path.dirname(__file__), '../.env'))
