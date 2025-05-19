@@ -5,12 +5,23 @@ import json
 import requests
 from flask_login import LoginManager, login_required, current_user, login_user, logout_user, UserMixin
 from authlib.integrations.flask_client import OAuth
+import sqlite3
+from models import db, Comments
 
 # Load environment variables from .env file
 load_dotenv(dotenv_path=os.path.join(os.path.dirname(__file__), '../.env'))
 
 app = Flask(__name__, template_folder='../frontend/templates', static_folder='../frontend/static')
 app.secret_key = 'a_very_secret_key_for_dev_1234567890'
+
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+db.init_app(app)
+
+with app.app_context():
+    #db.drop_all()
+    db.create_all()
 
 
 nyt_api_key = os.getenv('NYT_API_KEY')
@@ -32,26 +43,51 @@ oauth.register(
     redirect_uri='http://localhost:8000/authorize'
 )
 
-# Dummy user class and user storage
-class User(UserMixin):
-    def __init__(self, user_id, name, email):
-        self.id = user_id
-        self.name = name
-        self.email = email
 
 users = {}
+
+
+class User(UserMixin):
+    def __init__(self, user_id, username, email):
+        self.id = user_id
+        self.username = username
+        self.email = email
+
+
 
 @login_manager.user_loader
 def load_user(user_id):
     return users.get(user_id)
 
+@app.route('/add_comments', methods = ['POST'])
+def add_comments(): 
+
+    comment_text1 = request.form.get('comment1')
+    comment_text2 = request.form.get('comment2')
+    comment_text3 = request.form.get('comment3')
+
+    if comment_text1:
+        new_comment = Comments(comment1=comment_text1)
+    elif comment_text2:
+        new_comment = Comments(comment2=comment_text2)
+    elif comment_text3:
+        new_comment = Comments(comment3=comment_text3)
+    else:
+        # No comment submitted, handle error or redirect
+        return redirect(url_for('index'))
+
+    db.session.add(new_comment)
+    db.session.commit()
+    return redirect(url_for('index'))
+
 @app.route('/')
 @login_required
 def index():
+    comments = Comments.query.all()
     stories = get_stories()
     stories.sort(key=lambda x: x.get("pub_date", ""), reverse=True)
     limited_stories = stories[:3]
-    return render_template('index.html', limited_stories=limited_stories, stories=stories)
+    return render_template('index.html', comments = comments, limited_stories=limited_stories, stories=stories)
 
 @app.route('/login')
 def login():
@@ -63,7 +99,7 @@ def authorize():
     token = oauth.dex.authorize_access_token()
     nonce = session.get('oauth_nonce')
     userinfo = oauth.dex.parse_id_token(token, nonce)
-    user = User(userinfo['sub'], userinfo.get('name', 'Unknown'), userinfo.get('email', 'unknown@example.com'))
+    user = User(userinfo['sub'], userinfo.get('username', 'Unknown'), userinfo.get('email', 'unknown@example.com'))
     users[user.id] = user
     session['user'] = {
         'username': userinfo.get('username'),
@@ -120,6 +156,10 @@ def get_stories():
     else:
         print("Error fetching stories")
         return []
+
+
+
+
 
 if __name__ == '__main__':
     app.run(debug=True, port=8000)

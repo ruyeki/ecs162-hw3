@@ -6,7 +6,7 @@
             .then(data => {
                 if (data.email) {
                     console.log(data.email)
-                document.getElementById('username').textContent = `Logged in as ${data.email}`;
+                document.getElementById('username').textContent = `Logged in as ${data.username}`;
                 }
             });
 
@@ -46,6 +46,20 @@
                     <!--Extracting image from multimedia metadata-->
                     <img src="{{ stories[0]['multimedia']['default']['url'] }}" alt="Thumbnail Image" />
                     <hr>
+                    
+                    <form action="{{ url_for('add_comments') }}" method="POST">
+                        <input name="comment1" id="comment1" />
+                        <button type="submit">Submit</button>
+                    </form>
+
+                    <section class = "comment-section1">
+                        {%for comment in comments%}
+                            {%if comment.comment1%}
+                                <p>{{comment.comment1}}</p>
+                            {%endif%}
+                        {%endfor%}
+                    </section>
+
                 </section>
                 
                 <!--Middle article-->
@@ -62,6 +76,22 @@
                     <!--Extracting image from multimedia metadata-->
                     <img src="{{ stories[1]['multimedia']['default']['url'] }}" alt="Thumbnail Image" />
                     <hr>
+
+                    <form action="{{ url_for('add_comments') }}" method="POST">
+                        <input name="comment2" id="comment2" />
+                        <button type="submit">Submit</button>
+                    </form>
+
+                    <section class = "comment-section1">
+                        {%for comment in comments%}
+                            {%if comment.comment2%}
+                                <p>{{comment.comment2}}</p>
+                            {%endif%}
+                        {%endfor%}
+                    </section>
+
+
+
                 </section>
                 
                 <!--Article on rightmost side-->
@@ -78,6 +108,20 @@
                     <!--Extracting image from multimedia metadata-->
                     <img src="{{ stories[2]['multimedia']['default']['url'] }}" alt="Thumbnail Image" />
                     <hr>
+
+
+                    <form action="{{ url_for('add_comments') }}" method="POST">
+                        <input name="comment3" id="comment3" />
+                        <button type="submit">Submit</button>
+                    </form>
+
+                    <section class = "comment-section1">
+                        {%for comment in comments%}
+                            {%if comment.comment3%}
+                                <p>{{comment.comment3}}</p>
+                            {%endif%}
+                        {%endfor%}
+                    </section>
                 </section>
             </div>
             
