@@ -104,6 +104,33 @@ def delete(id):
     db.session.commit()
     return redirect(url_for('index'))
 
+@app.route('/redact/<int:id>', methods=['POST'])
+def redact_comment(id):
+    if 'user' not in session:
+        return redirect(url_for('index'))
+
+    user_email = session['user']['email']
+    if user_email not in ['admin@hw3.com', 'moderator@hw3.com']:
+        flash('Unauthorized to redact comments')
+        return redirect(url_for('index'))
+
+    comment = Comments.query.get_or_404(id)
+    redact_text = request.form.get('redact_text', '')
+
+    if not redact_text:
+        flash('No text provided to redact.')
+        return redirect(url_for('index'))
+
+    def redact_field(text):
+        return text.replace(redact_text, '█' * len(redact_text)) if text else text
+
+    comment.comment1 = redact_field(comment.comment1)
+    comment.comment2 = redact_field(comment.comment2)
+    db.session.commit()
+
+    flash('Comment redacted successfully.')
+    return redirect(url_for('index'))
+
 
 #route for logging in a user
 @app.route('/login')
