@@ -14,11 +14,10 @@ load_dotenv(dotenv_path=os.path.join(os.path.dirname(__file__), '../.env'))
 app = Flask(__name__, template_folder='../frontend/templates', static_folder='../frontend/static')
 app.secret_key = 'a_very_secret_key_for_dev_1234567890'
 
+#setting up the sqlite database
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
 db.init_app(app)
-
 with app.app_context():
     #db.drop_all()
     db.create_all()
@@ -31,9 +30,8 @@ login_manager = LoginManager()
 login_manager.login_view = 'login'
 login_manager.init_app(app)
 
-# Authlib OIDC (Dex) setup
+# setting up dex
 oauth = OAuth(app)
-
 oauth.register(
     name='dex',
     client_id=os.getenv('DEX_CLIENT_ID', 'flask-app'),
@@ -45,8 +43,6 @@ oauth.register(
 
 
 users = {}
-
-
 class User(UserMixin):
     def __init__(self, user_id, username, email):
         self.id = user_id
@@ -54,11 +50,11 @@ class User(UserMixin):
         self.email = email
 
 
-
 @login_manager.user_loader
 def load_user(user_id):
     return users.get(user_id)
 
+#API end point for adding comments to a certain article
 @app.route('/add_comments', methods = ['POST'])
 def add_comments(): 
 
@@ -92,6 +88,7 @@ def index():
     return render_template('index.html', user_email = user_email, comments = comments, limited_stories=limited_stories, stories=stories)
 
 
+#API endpoint for deleting a certain comment based on its id
 @app.route('/delete/<int:id>', methods = ['POST'])
 def delete(id): 
 
@@ -108,11 +105,13 @@ def delete(id):
     return redirect(url_for('index'))
 
 
+#route for logging in a user
 @app.route('/login')
 def login():
     redirect_uri = url_for('authorize', _external=True)
     return oauth.dex.authorize_redirect(redirect_uri)
 
+#route for authoirizing a user login
 @app.route('/authorize')
 def authorize():
     token = oauth.dex.authorize_access_token()
@@ -127,16 +126,13 @@ def authorize():
     login_user(user)
     return redirect(url_for('index'))
 
+#route for logging out a user
 @app.route('/logout')
 @login_required
 def logout():
     logout_user()
     session.clear()
     return redirect(url_for('login'))
-
-@app.route('/signup', methods=['GET'])
-def signup():
-    return render_template('signup.html')
 
 def extract_city_from_keywords(keywords):
     for keyword in keywords:
@@ -146,6 +142,7 @@ def extract_city_from_keywords(keywords):
             return 'Davis'
     return None
 
+#API endpoint for getting a story from nyt api
 def get_stories():
     url = 'https://api.nytimes.com/svc/search/v2/articlesearch.json'
     params = {

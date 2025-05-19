@@ -1,5 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+    <script>
+        window.onload = function() {
+            document.getElementById('articles').style.display = '';
+        }
+    </script>
     <head>
         <title>The New York Times - Breaking News, US News, World News, and Videos</title>
         <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
@@ -25,22 +30,24 @@
                 <!--First article on leftmost side-->
                 <section class="article1">
 
-                    <!--Extracting attributes from very first story in stories list-->
-                    <h2><a href="{{ stories[0].url }}" target="_blank">{{ stories[0].title }}</a></h2>
-                    <p><strong>Published:</strong> {{ stories[0].pub_date }}</p>
-
-                    <!--Extracting summary-->
-                    <p>{{ stories[0].summary }}</p>
-
-                    <!--Extracting image from multimedia metadata-->
-                    <img src="{{ stories[0]['multimedia']['default']['url'] }}" alt="Thumbnail Image" />
+                    <!--Ensure that all the articles are loaded, if not display no articles available-->
+                    {% if stories|length > 0 %}
+                        <h2><a href="{{ stories[0].url }}" target="_blank">{{ stories[0].title }}</a></h2>
+                        <p><strong>Published:</strong> {{ stories[0].pub_date }}</p>
+                        <p>{{ stories[0].summary }}</p>
+                        <img src="{{ stories[0]['multimedia']['default']['url'] }}" alt="Thumbnail Image" />
+                    {% else %}
+                        <p>No articles available yet.</p>
+                    {% endif %}
                     <hr>
                     
+                    <!--Form action for adding a comment, complete with input and submit button-->
                     <form action="{{ url_for('add_comments') }}" method="POST">
                         <input name="comment1" id="comment1" />
                         <button type="submit">Submit</button>
                     </form>
-
+                    
+                    <!--Deleting a certain comment-->
                     <section class = "comment-section1">
                         {%for comment in comments%}
                             {%if comment.comment1%}
@@ -58,23 +65,24 @@
                 <!--Middle article-->
                 <section class="article2">
 
-                    <!--Extracting attributes from second story in stories list-->
-                    <h2><a href="{{ stories[1].url }}" target="_blank">{{ stories[1].title }}</a></h2>
-                    <p><strong>Published:</strong> {{ stories[1].pub_date }}</p>
-
-                    <!--Extracting summary-->
-                    <p>{{ stories[1].summary }}</p>
-
-                    
-                    <!--Extracting image from multimedia metadata-->
-                    <img src="{{ stories[1]['multimedia']['default']['url'] }}" alt="Thumbnail Image" />
+                    <!--Ensure that all the articles are loaded, if not display no articles available-->
+                    {% if stories|length > 0 %}
+                        <h2><a href="{{ stories[1].url }}" target="_blank">{{ stories[1].title }}</a></h2>
+                        <p><strong>Published:</strong> {{ stories[1].pub_date }}</p>
+                        <p>{{ stories[1].summary }}</p>
+                        <img src="{{ stories[1]['multimedia']['default']['url'] }}" alt="Thumbnail Image" />
+                    {% else %}
+                        <p>No articles available yet.</p>
+                    {% endif %}
                     <hr>
 
+                    <!--Form action for adding a comment, complete with input and submit button-->
                     <form action="{{ url_for('add_comments') }}" method="POST">
                         <input name="comment2" id="comment2" />
                         <button type="submit">Submit</button>
                     </form>
 
+                    <!--Deleting a certain comment-->
                     <section class = "comment-section1">
                         {%for comment in comments%}
                             {%if comment.comment2%}
@@ -93,24 +101,25 @@
                 <!--Article on rightmost side-->
                 <section class="article3">
 
-                    <!--Extracting attributes from third story in stories list-->
-                    <h2><a href="{{ stories[2].url }}" target="_blank">{{ stories[2].title }}</a></h2>
-                    <p><strong>Published:</strong> {{ stories[2].pub_date }}</p>
-
-                    <!--Extracting summary-->
-                    <p>{{ stories[2].summary }}</p>
-
-                    
-                    <!--Extracting image from multimedia metadata-->
-                    <img src="{{ stories[2]['multimedia']['default']['url'] }}" alt="Thumbnail Image" />
+                    <!--Ensure that all the articles are loaded, if not display no articles available-->
+                    {% if stories|length > 0 %}
+                        <h2><a href="{{ stories[2].url }}" target="_blank">{{ stories[2].title }}</a></h2>
+                        <p><strong>Published:</strong> {{ stories[2].pub_date }}</p>
+                        <p>{{ stories[2].summary }}</p>
+                        <img src="{{ stories[2]['multimedia']['default']['url'] }}" alt="Thumbnail Image" />
+                    {% else %}
+                        <p>No articles available yet.</p>
+                    {% endif %}
                     <hr>
 
 
+                    <!--Form action for adding a comment, complete with input and submit button-->
                     <form action="{{ url_for('add_comments') }}" method="POST">
                         <input name="comment3" id="comment3" />
                         <button type="submit">Submit</button>
                     </form>
 
+                    <!--Deleting a certain comment-->
                     <section class = "comment-section1">
                         {%for comment in comments%}
                             {%if comment.comment3%}
